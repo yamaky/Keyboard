@@ -16,22 +16,16 @@ namespace Keyboard
                                  "\n#                 #" +
                                  "\n#     Keyboard    #" +
                                  "\n#                 #" +
-                                 "\n###################";
+                                 "\n###################\n\n";
             Console.Write(startScreen);
-            Console.Read();
+            Console.WriteLine("Нажмите Enter");
+            Console.ReadLine();
             Console.Clear();
 
             bool rightEnter = false;
             Console.WriteLine("Введите уровень (1-7):");
 
-            string inputLevel;
-            inputLevel = Console.ReadLine();
-            inputLevel = Console.ReadLine();
-           // Console.WriteLine($"inputLevel = {inputLevel}");
-
-
-            //string inputLevel = Console.ReadLine();
-
+            string inputLevel = Console.ReadLine();
             int level;
 
             rightEnter = int.TryParse(inputLevel, out level);
@@ -146,7 +140,14 @@ namespace Keyboard
 
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\n\n\t\tEnd Game");
+            if (loose)
+            {
+                Console.WriteLine("\n\n\t\tYou LOSE!");
+            }
+            else
+            {
+                Console.WriteLine("\n\n\t\tYou WIN!");
+            }
             Console.WriteLine($"\n\n\t\tYour Time {game.TotalSeconds}");
 
             Console.Read();
